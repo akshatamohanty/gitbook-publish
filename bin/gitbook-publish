@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function exit_on_error(){
+	echo $1
+	git add .
+	git stash
+	git stash drop
+	echo 'moving to master'
+	git checkout master
+	exit 1
+}
+
+gitbook build || exit_on_error  'error-building' \
+&& git checkout gh-pages && echo 'in-gh-pages' || exit_on_error "error checking out" \
+&& find . -maxdepth 1 ! -name '.git' -and ! -name '_book' -and ! -name '.gitignore' -and ! -name '.' -exec rm -r -f {} +  && echo 'deleted-previous-version' || exit_on_error 'deleting-previous-version-failed' \
+&& cp -r ./_book/* ./ && echo 'extracted-files' || exit_on_error 'error-copying' \
+&& rm -R _book || exit_on_error 'error-copying'  \
+&& git add . && git commit -m"Automated Build Complete" || exit_on_error 'error-committing-build' \
+&& git checkout master && echo 'build-complete' || exit_on_error 'error-shifting-to-master' 

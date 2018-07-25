@@ -1,0 +1,29 @@
+{
+  "name": "gitbook-publish",
+  "version": "1.0.0",
+  "description": "NPM package to publish gitbooks to gh-pages",
+  "main": "index.js",
+  "bin": {
+    "gitpub": "bin/gitbook-publish"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshatamohanty/gitbook-publish.git"
+  },
+  "keywords": [
+    "gitbook",
+    "gh-pages"
+  ],
+  "author": "Akshata Mohanty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akshatamohanty/gitbook-publish/issues"
+  },
+  "homepage": "https://github.com/akshatamohanty/gitbook-publish#readme",
+  "dependencies": {
+    "gitbook": "^3.2.3"
+  }
+}

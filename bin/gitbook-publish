@@ -1,19 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env node
+const gbuild ="gitbook build" 
+const checkout_gh ="git checkout gh-pages && echo 'in-gh-pages'"
+const delete_prev_version ="find . -maxdepth 1 ! -name '.git' -and ! -name '_book' -and ! -name '.gitignore' -and ! -name '.' -exec rm -r -f {} +  && echo 'deleted-previous-version'"
+const extract_files ="cp -r ./_book/* ./ && echo 'extracted-files'"
+const clean_up = "rm -R ./_book && echo 'clean-up-completed'"
+const push_to_ghpages ="git add . && git commit -m'Automated-Build-Complete' && echo 'git-committed'"
+const checkout_master ="git checkout master && echo 'build-complete'"
 
-function exit_on_error(){
-	echo $1
-	git add .
-	git stash
-	git stash drop
-	echo 'moving to master'
-	git checkout master
-	exit 1
-}
+const script = gbuild + " && " + checkout_gh + " && " + delete_prev_version + " && " + extract_files + " && " + clean_up + " && " + push_to_ghpages + " && " + checkout_master
 
-gitbook build || exit_on_error  'error-building' \
-&& git checkout gh-pages && echo 'in-gh-pages' || exit_on_error "error checking out" \
-&& find . -maxdepth 1 ! -name '.git' -and ! -name '_book' -and ! -name '.gitignore' -and ! -name '.' -exec rm -r -f {} +  && echo 'deleted-previous-version' || exit_on_error 'deleting-previous-version-failed' \
-&& cp -r ./_book/* ./ && echo 'extracted-files' || exit_on_error 'error-copying' \
-&& rm -R _book || exit_on_error 'error-copying'  \
-&& git add . && git commit -m"Automated Build Complete" || exit_on_error 'error-committing-build' \
-&& git checkout master && echo 'build-complete' || exit_on_error 'error-shifting-to-master' 
+var shell = require("shelljs");
+shell.exec(script);

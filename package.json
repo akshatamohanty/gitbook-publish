@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/akshatamohanty/gitbook-publish#readme",
   "dependencies": {
-    "gitbook": "^3.2.3"
+    "gitbook": "^3.2.3",
+    "shelljs": "^0.8.2"
   }
 }

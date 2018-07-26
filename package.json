@@ -1,6 +1,6 @@
 {
   "name": "gitbook-publish",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NPM package to publish gitbooks to gh-pages",
   "main": "index.js",
   "bin": {

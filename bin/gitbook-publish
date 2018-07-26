@@ -4,7 +4,7 @@ const checkout_gh ="git fetch && git checkout gh-pages && echo 'in-gh-pages'"
 const delete_prev_version ="find . -maxdepth 1 ! -name '.git' -and ! -name '_book' -and ! -name '.gitignore' -and ! -name '.' -exec rm -r -f {} +  && echo 'deleted-previous-version'"
 const extract_files ="cp -r ./_book/* ./ && echo 'extracted-files'"
 const clean_up = "rm -R ./_book && echo 'clean-up-completed'"
-const commit_ghpages ="git add . && git commit --message 'Travis build: $TRAVIS_BUILD_NUMBER' && echo 'git-committed'"
+const commit_ghpages ="git add . && git commit -m'Autodeployed-by-GitBook-Publish' && echo 'git-committed'"
 const push_ghpages = "git push origin gh-pages"
 const checkout_master ="git checkout master && echo 'build-complete'"
 

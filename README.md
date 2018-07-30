@@ -2,7 +2,7 @@
 This module helps publish a Gitbook to gh-pages using the command `gitpub`
 
 
-## What it does
+### What it does
 Once installed, the `gitpub` command is automatically available. Running the command:
 - Builds the gitbook using `gitbook build`
 - Checks out to the `gh-pages` branch
@@ -11,13 +11,13 @@ Once installed, the `gitpub` command is automatically available. Running the com
 - Commits the new version to `gh-pages`
 
 
-## Usage
+### Usage
 - Install the package: `npm install gitbook-publish@latest`
 - Navigate to the branch that contains all the markdown files for your Gitbook
 - Delete the `gh-pages` branch if it already exists
 - Run command: `gitpub`
 
-## Integration with Travis
+### Integration with Travis
 An example file for Travis Integration. The USER_NAME, GITHUB_TOKEN and GITHUB_REPO environement variables will need to be set in the Travis environment.
 ```
     language: node_js
@@ -35,7 +35,7 @@ An example file for Travis Integration. The USER_NAME, GITHUB_TOKEN and GITHUB_R
       - git push --force "https://{USER_NAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}" gh-pages 
 ```
 
-## Future Improvements
+### Future Improvements
 - Add flag to push with github username and password
 - Automatically detech if `gh-pages` exists
 - Inbuilt Travis Integration
